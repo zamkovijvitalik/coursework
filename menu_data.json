@@ -1,0 +1,95 @@
+[
+    {
+        "model": "menu.category",
+        "pk": 1,
+        "fields": {
+            "name": "Кава"
+        }
+    },
+    {
+        "model": "menu.category",
+        "pk": 2,
+        "fields": {
+            "name": "Чай"
+        }
+    },
+    {
+        "model": "menu.category",
+        "pk": 3,
+        "fields": {
+            "name": "Десерти"
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 1,
+        "fields": {
+            "category": 1,
+            "name": "Еспресо",
+            "description": "Класична міцна кава без молока.",
+            "price": "45.00",
+            "image": "menu_images/espresso.jpg",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 2,
+        "fields": {
+            "category": 1,
+            "name": "Капучино",
+            "description": "Кава з молоком і ніжною піною.",
+            "price": "60.00",
+            "image": "menu_images/cappuccino.jpg",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 3,
+        "fields": {
+            "category": 2,
+            "name": "Чорний чай",
+            "description": "Запашний чорний чай без додатків.",
+            "price": "30.00",
+            "image": "menu_images/black_tea.jpg",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 4,
+        "fields": {
+            "category": 2,
+            "name": "Зелений чай",
+            "description": "Корисний зелений чай з натуральним смаком.",
+            "price": "35.00",
+            "image": "menu_images/green_tea.jpg",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 5,
+        "fields": {
+            "category": 3,
+            "name": "Чізкейк",
+            "description": "Ніжний сирний чізкейк із малиновим соусом.",
+            "price": "80.00",
+            "image": "menu_images/cheesecake.jpg",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 6,
+        "fields": {
+            "category": 3,
+            "name": "Шоколадний торт",
+            "description": "Багатий шоколадний смак, прикрашений горіхами.",
+            "price": "85.00",
+            "image": "menu_images/chocolate_cake.jpg",
+            "available": true
+        }
+    }
+]
