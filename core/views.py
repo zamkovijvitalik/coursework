@@ -1,6 +1,14 @@
 from django.shortcuts import render
-from menu.models import MenuItem
 
 def index(request):
-    featured_items = MenuItem.objects.filter(available=True)[:6]  # Відображаємо 6 популярних позицій
-    return render(request, "home.html", {"featured_items": featured_items})
+    return render(request, 'my.html')
+
+def menu(request):
+    return render(request, 'menu.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+def contacts(request):
+    return render(request, 'contacts.html')
+
