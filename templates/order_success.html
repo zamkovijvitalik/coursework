@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Замовлення підтверджено</title>
+    <style>
+        body { font-family: Arial, sans-serif; background:#f9f9f9; padding:20px; text-align:center; }
+        .container { background:#fff; display:inline-block; padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+        h1 { color: #4b3832; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Дякуємо за замовлення!</h1>
+        <p>Ви обрали:</p>
+        <ul>
+            {% for item in selected_items %}
+                <li>{{ item.name }} — {{ item.price }} грн</li>
+            {% endfor %}
+        </ul>
+        <a href="/">Повернутись на головну</a>
+    </div>
+</body>
+</html>
