@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Мій акаунт | Black&Brew</title>
+</head>
+<body>
+    <h2>Особиста сторінка</h2>
+    <p><strong>Ім’я користувача:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Дата реєстрації:</strong> {{ user.date_joined|date:"d.m.Y H:i" }}</p>
+
+    <p><a href="/">Повернутися на головну</a></p>
+    <p><a href="{% url 'logout' %}">Вийти з акаунту</a></p>
+</body>
+</html>
