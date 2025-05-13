@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Ваш кошик</h2>
+
+  {% if items %}
+    <ul>
+      {% for ci in items %}
+        <li>
+          {{ ci.product.name }} × {{ ci.quantity }}
+        </li>
+      {% endfor %}
+    </ul>
+    <a href="{% url 'cart:checkout' %}">Оформити замовлення</a>
+  {% else %}
+    <p>Кошик порожній.</p>
+  {% endif %}
+
+{% endblock %}
