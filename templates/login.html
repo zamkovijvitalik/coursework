@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Вхід | Black&Brew</title>
+</head>
+<body>
+    <h2>Вхід</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Увійти</button>
+    </form>
+
+    <p>Ще не маєте акаунту?
+        <a href="{% url 'register' %}">Зареєструйтесь</a>
+    </p>
+</body>
+</html>

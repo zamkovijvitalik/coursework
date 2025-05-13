@@ -1,5 +1,5 @@
 """
-URL configuration for blackbrew project.
+URL configuration for config project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -15,17 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
-from core import views
-
+from django.urls import path, include
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", views.index, name="index"),  # головна сторінка
-    path("menu/", views.menu, name="menu"),  # меню
-    path("about/", views.about, name="about"),  # про нас
-    path("contacts/", views.contacts, name="contacts"),  # контакти
-    path("users/", include("users.urls")),
-    path("orders/", include("orders.urls")),
-    path("management/", include("management.urls")),
+    path('admin/', admin.site.urls),
+    path('', include('navigation.urls', namespace='navigation')),
+
 ]
