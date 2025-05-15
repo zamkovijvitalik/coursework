@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 from .models import CartItem, Order, OrderItem
 from .forms import GuestNameForm
-from menu.models import MenuItem
+from cart.models import Product
 
 def _get_session_key(request):
     if not request.session.session_key:
@@ -10,26 +10,23 @@ def _get_session_key(request):
     return request.session.session_key
 
 @require_POST
-def add_to_cart(request, pk):
-    # Жорсткий хардкод-словник товарів
-    MENU = {
-        1: {'name':'Americano', 'price':60},
+def add_to_cart(request, product_id):
+    product = Product.objects.get(id=product_id)
+    session_key = request.session.session_key
+    if not session_key:
+        request.session.create()
+        session_key = request.session.session_key
 
-        # …додай решту
-    }
-    data = MENU.get(pk)
-    if not data:
-        raise Http404("Невідомий товар")
-    if request.user.is_authenticated:
-        user_field = {'user': request.user}
-    else:
-        user_field = {'session_key': _get_session_key(request)}
     CartItem.objects.create(
-        product_name  = data['name'],
-        product_price = data['price'],
-        **user_field
+        product=product,
+        session_key=session_key,
+        user=request.user if request.user.is_authenticated else None,
+        quantity=1
     )
+
     return redirect('cart:detail')
+
+
 
 
 def cart_detail(request):
