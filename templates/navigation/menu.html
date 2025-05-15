@@ -97,6 +97,245 @@
             </div>
             </div>
 
+            <div class="menu-item">
+            <img src="{% static 'img/late.jpg' %}" alt="Late">
+            <div class="menu-info">
+                <div class="menu-text">
+                <h3>Late</h3>
+                <p>Ніжна кава з молоком</p>
+                </div>
+                <div class="menu-bottom">
+                <span class="price">70 грн</span>
+                <form method="post" action="{% url 'cart:add' 1 %}">
+                    {% csrf_token %}
+                    <button type="submit">Замовити</button>
+                </form>
+                </div>
+            </div>
+            </div>
+
+            <div class="menu-item">
+            <img src="{% static 'img/breve.jpg' %}" alt="Coffee Breve">
+            <div class="menu-info">
+                <div class="menu-text">
+                <h3>Coffee Breve</h3>
+                <p>З вершками замість молока</p>
+                </div>
+                <div class="menu-bottom">
+                <span class="price">75 грн</span>
+                <form method="post" action="{% url 'cart:add' 1 %}">
+                    {% csrf_token %}
+                    <button type="submit">Замовити</button>
+                </form>
+                </div>
+            </div>
+            </div>
+
+            <div class="menu-item">
+            <img src="{% static 'img/irish.jpg' %}" alt="Irish Coffee">
+            <div class="menu-info">
+                <div class="menu-text">
+                <h3>Irish Coffee</h3>
+                <p>З віскі та вершками</p>
+                </div>
+                <div class="menu-bottom">
+                <span class="price">100 грн</span>
+                <form method="post" action="{% url 'cart:add' 1 %}">
+                    {% csrf_token %}
+                    <button type="submit">Замовити</button>
+                </form>
+                </div>
+            </div>
+            </div>
+
+            <div class="menu-item">
+            <img src="{% static 'img/cappuccino.jpg' %}" alt="Cappuccino">
+            <div class="menu-info">
+                <div class="menu-text">
+                <h3>Cappuccino</h3>
+                <p>З молочною піною</p>
+                </div>
+                <div class="menu-bottom">
+                <span class="price">70 грн</span>
+                <form method="post" action="{% url 'cart:add' 1 %}">
+                    {% csrf_token %}
+                    <button type="submit">Замовити</button>
+                </form>
+                </div>
+            </div>
+            </div>
+
+            <div class="menu-item">
+            <img src="{% static 'img/espresso.jpg' %}" alt="Espresso">
+            <div class="menu-info">
+                <div class="menu-text">
+                <h3>Espresso</h3>
+                <p>Міцна кава в одній порції</p>
+                </div>
+                <div class="menu-bottom">
+                <span class="price">55 грн</span>
+                <form method="post" action="{% url 'cart:add' 1 %}">
+                    {% csrf_token %}
+                    <button type="submit">Замовити</button>
+                </form>
+                </div>
+            </div>
+            </div>
+
+            <div class="menu-item">
+            <img src="{% static 'img/flatwhite.jpg' %}" alt="Flat White">
+            <div class="menu-info">
+                <div class="menu-text">
+                <h3>Flat White</h3>
+                <p>Міцна, з легкою піною</p>
+                </div>
+                <div class="menu-bottom">
+                <span class="price">75 грн</span>
+                <form method="post" action="{% url 'cart:add' 1 %}">
+                    {% csrf_token %}
+                    <button type="submit">Замовити</button>
+                </form>
+                </div>
+            </div>
+            </div>
+
+            <div class="menu-item">
+            <img src="{% static 'img/glace.jpg' %}" alt="Glace">
+            <div class="menu-info">
+                <div class="menu-text">
+                <h3>Glace</h3>
+                <p>Кава з морозивом</p>
+                </div>
+                <div class="menu-bottom">
+                <span class="price">90 грн</span>
+                <form method="post" action="{% url 'cart:add' 1 %}">
+                    {% csrf_token %}
+                    <button type="submit">Замовити</button>
+                </form>
+                </div>
+            </div>
+            </div>
+
+            <div class="menu-item">
+            <img src="{% static 'img/corretto.jpg' %}" alt="Corretto">
+            <div class="menu-info">
+                <div class="menu-text">
+                <h3>Corretto</h3>
+                <p>Кава з лікером</p>
+                </div>
+                <div class="menu-bottom">
+                <span class="price">85 грн</span>
+                <form method="post" action="{% url 'cart:add' 1 %}">
+                    {% csrf_token %}
+                    <button type="submit">Замовити</button>
+                </form>
+                </div>
+            </div>
+            </div>
+
+            <div class="menu-item">
+            <img src="{% static 'img/lungo.jpg' %}" alt="Lungo">
+            <div class="menu-info">
+                <div class="menu-text">
+                <h3>Lungo</h3>
+                <p>Розбавлене еспресо</p>
+                </div>
+                <div class="menu-bottom">
+                <span class="price">60 грн</span>
+                <form method="post" action="{% url 'cart:add' 1 %}">
+                    {% csrf_token %}
+                    <button type="submit">Замовити</button>
+                </form>
+                </div>
+            </div>
+            </div>
+
+            <div class="menu-item">
+            <img src="{% static 'img/macchiato.jpg' %}" alt="Macchiato">
+            <div class="menu-info">
+                <div class="menu-text">
+                <h3>Macchiato</h3>
+                <p>Еспресо з краплею молока</p>
+                </div>
+                <div class="menu-bottom">
+                <span class="price">65 грн</span>
+                <form method="post" action="{% url 'cart:add' 1 %}">
+                    {% csrf_token %}
+                    <button type="submit">Замовити</button>
+                </form>
+                </div>
+            </div>
+            </div>
+
+            <div class="menu-item">
+            <img src="{% static 'img/romano.jpg' %}" alt="Espresso Romano">
+            <div class="menu-info">
+                <div class="menu-text">
+                <h3>Espresso Romano</h3>
+                <p>Еспресо з лимоном</p>
+                </div>
+                <div class="menu-bottom">
+                <span class="price">65 грн</span>
+                <form method="post" action="{% url 'cart:add' 1 %}">
+                    {% csrf_token %}
+                    <button type="submit">Замовити</button>
+                </form>
+                </div>
+            </div>
+            </div>
+
+            <div class="menu-item">
+            <img src="{% static 'img/iced.jpg' %}" alt="Iced Coffee">
+            <div class="menu-info">
+                <div class="menu-text">
+                <h3>Iced Coffee</h3>
+                <p>Освіжаюча холодна кава</p>
+                </div>
+                <div class="menu-bottom">
+                <span class="price">70 грн</span>
+                <form method="post" action="{% url 'cart:add' 1 %}">
+                    {% csrf_token %}
+                    <button type="submit">Замовити</button>
+                </form>
+                </div>
+            </div>
+            </div>
+
+            <div class="menu-item">
+            <img src="{% static 'img/frappe.jpg' %}" alt="Frappe">
+            <div class="menu-info">
+                <div class="menu-text">
+                <h3>Frappe</h3>
+                <p>Збита кава з льодом</p>
+                </div>
+                <div class="menu-bottom">
+                <span class="price">80 грн</span>
+                <form method="post" action="{% url 'cart:add' 1 %}">
+                    {% csrf_token %}
+                    <button type="submit">Замовити</button>
+                </form>
+                </div>
+            </div>
+            </div>
+
+            <div class="menu-item">
+            <img src="{% static 'img/raf.jpg' %}" alt="Raf">
+            <div class="menu-info">
+                <div class="menu-text">
+                <h3>Raf</h3>
+                <p>Кремово-ванільна кава</p>
+                </div>
+                <div class="menu-bottom">
+                <span class="price">85 грн</span>
+                <form method="post" action="{% url 'cart:add' 1 %}">
+                    {% csrf_token %}
+                    <button type="submit">Замовити</button>
+                </form>
+                </div>
+            </div>
+            </div>
+
+
             <!-- Дублюй аналогічні блоки для інших позицій, змінюючи src і URL -->
             <!-- наприклад, для Late: action="{% url 'cart:add' 2 %}" та src="{% static 'img/late.jpg' %}" -->
 
