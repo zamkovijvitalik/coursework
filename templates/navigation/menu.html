@@ -49,59 +49,61 @@
 </head>
 <body>
 
-<header>
-    <h1>Black&amp;Brew</h1>
-</header>
+    <header>
+        <h1>Black&amp;Brew</h1>
+    </header>
 
-<nav>
-    <div></div>
-    <div>
-        <a href="/">Головна</a>
-        <a href="/menu/">Меню</a>
-        <a href="/about/">Про нас</a>
-        <a href="/contacts/">Контакти</a>
-    </div>
-    <div>
-        <a href="/cart/">Кошик</a>
-        {% if user.is_authenticated %}
-            <a href="/account/">Акаунт</a>
-        {% else %}
-            <a href="/login/?next=/account/">Акаунт</a>
-        {% endif %}
-    </div>
-</nav>
+    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
+        <div style="width: 150px;"></div>
 
-<div class="container">
-    <h2>Меню</h2>
-    <div class="menu-grid">
-
-        <!-- Приклад одного хардкод-блоку -->
-        <div class="menu-item">
-        <img src="{% static 'img/americano.jpg' %}" alt="Americano">
-        <div class="menu-info">
-            <div class="menu-text">
-            <h3>Americano</h3>
-            <p>Класична чорна кава</p>
-            </div>
-            <div class="menu-bottom">
-            <span class="price">60 грн</span>
-            <form method="post" action="{% url 'cart:add' 1 %}">
-                {% csrf_token %}
-                <button type="submit">Замовити</button>
-            </form>
-            </div>
-        </div>
+        <div style="display: flex; gap: 24px;">
+            <a href="/">Головна</a>
+            <a href="/menu/">Меню</a>
+            <a href="/about/">Про нас</a>
+            <a href="/contacts/">Контакти</a>
         </div>
 
-        <!-- Дублюй аналогічні блоки для інших позицій, змінюючи src і URL -->
-        <!-- наприклад, для Late: action="{% url 'cart:add' 2 %}" та src="{% static 'img/late.jpg' %}" -->
+        <div style="display: flex; gap: 10px; width: 150px; justify-content: flex-end;">
+            <a href="/cart/">Кошик</a>
+            {% if user.is_authenticated %}
+                <a href="/account/">Акаунт</a>
+            {% else %}
+                <a href="/login/?next=/account/">Акаунт</a>
+            {% endif %}
+        </div>
+    </nav>
 
+    <div class="container">
+        <h2>Меню</h2>
+        <div class="menu-grid">
+
+            <!-- Приклад одного хардкод-блоку -->
+            <div class="menu-item">
+            <img src="{% static 'img/americano.jpg' %}" alt="Americano">
+            <div class="menu-info">
+                <div class="menu-text">
+                <h3>Americano</h3>
+                <p>Класична чорна кава</p>
+                </div>
+                <div class="menu-bottom">
+                <span class="price">60 грн</span>
+                <form method="post" action="{% url 'cart:add' 1 %}">
+                    {% csrf_token %}
+                    <button type="submit">Замовити</button>
+                </form>
+                </div>
+            </div>
+            </div>
+
+            <!-- Дублюй аналогічні блоки для інших позицій, змінюючи src і URL -->
+            <!-- наприклад, для Late: action="{% url 'cart:add' 2 %}" та src="{% static 'img/late.jpg' %}" -->
+
+        </div>
     </div>
-</div>
 
-<footer>
-    &copy; 2025 Black&amp;Brew. Смакуйте момент.
-</footer>
+    <footer>
+        &copy; 2025 Black&amp;Brew. Смакуйте момент.
+    </footer>
 
 </body>
 </html>
