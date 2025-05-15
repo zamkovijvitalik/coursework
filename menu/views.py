@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import MenuItem
+from menu.models import MenuItem
 
-def menu(request):
-    items = MenuItem.objects.all()
-    return render(request, 'menu.html', {'menu_items': items})
+def menu_view(request):
+    products = MenuItem.objects.all()
+    return render(request, 'menu.html', {'products': products})
