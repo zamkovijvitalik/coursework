@@ -1,0 +1,24 @@
+<h2>Невиконані замовлення</h2>
+
+<ul>
+        <li><a href="{% url 'staff:staff_orders' %}">Поточні замовлення</a></li>
+        <li><a href="{% url 'staff:done_orders' %}">Виконані замовлення</a></li>
+</ul>
+
+{% for order in orders %}
+  <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+    <p><strong>Замовлення №{{ order.id }}</strong> — {{ order.created_at|date:"d.m.Y H:i" }}</p>
+    <p>Ім'я: {{ order.name }}</p>
+    <ul>
+      {% for item in order.orderitem_set.all %}
+        <li>{{ item.product.name }} × {{ item.quantity }}</li>
+      {% endfor %}
+    </ul>
+    <form method="post" action="{% url 'staff:mark_order_completed' order.id %}">
+      {% csrf_token %}
+      <button type="submit">Позначити як виконане</button>
+    </form>
+  </div>
+{% empty %}
+  <p>Немає нових замовлень</p>
+{% endfor %}

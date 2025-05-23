@@ -1,0 +1,20 @@
+{% extends 'cart/base.html' %}
+
+{% block content %}
+  <h2>Історія замовлень</h2>
+
+  {% if orders %}
+    {% for order in orders %}
+      <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+        <p><strong>Замовлення №{{ order.id }}</strong> — {{ order.created_at|date:"d.m.Y H:i" }}</p>
+        <ul>
+          {% for item in order.orderitem_set.all %}
+            <li>{{ item.product.name }} × {{ item.quantity }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>У вас ще немає замовлень.</p>
+  {% endif %}
+{% endblock %}

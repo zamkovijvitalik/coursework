@@ -26,6 +26,7 @@ class Order(models.Model):
         blank=True,
         on_delete=models.SET_NULL
     )
+    is_completed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -34,7 +35,7 @@ class Order(models.Model):
 # Товари в замовленні
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
-    product = models.ForeignKey('menu.MenuItem', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
 
     def __str__(self):
