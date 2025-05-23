@@ -3,14 +3,39 @@
   <h2>Ваш кошик</h2>
 
   {% if items %}
-    <ul>
-      {% for ci in items %}
-        <li>
-          {{ ci.product.name }} × {{ ci.quantity }}
-        </li>
-      {% endfor %}
-    </ul>
+    <form method="post" action="{% url 'cart:cart_update_quantity' %}">
+      {% csrf_token %}
+      <table>
+        <thead>
+          <tr>
+            <th>Товар</th>
+            <th>Ціна</th>
+            <th>Кількість</th>
+            <th>Сума</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for ci in items %}
+            <tr>
+              <td>{{ ci.product.name }}</td>
+              <td>{{ ci.product.price }} грн</td>
+              <td>
+                <input type="number" name="quantities_{{ ci.id }}" value="{{ ci.quantity }}" min="1" max="99">
+              </td>
+              <td>{{ ci.total_price }} грн</td>
+              <td><a href="{% url 'cart:cart_remove' ci.id %}">Видалити</a>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <button type="submit">Оновити кількість</button>
+    </form>
+
+    <p><strong>Загалом: {{ total }} грн</strong></p>
     <a href="{% url 'cart:checkout' %}">Оформити замовлення</a>
+
   {% else %}
     <p>Кошик порожній.</p>
   {% endif %}
