@@ -8,7 +8,7 @@ def staff_login(request):
     if request.method == 'POST':
         if request.POST.get('password') == SECRET_STAFF_PASSWORD:
             request.session['staff_authenticated'] = True
-            return redirect('staff_home')
+            return redirect('staff:staff_home')
         else:
             return render(request, 'staff/password.html', {'error': 'Невірний пароль'})
     return render(request, 'staff/password.html')
@@ -17,7 +17,7 @@ def staff_required(view_func):
     def wrapper(request, *args, **kwargs):
         if request.session.get('staff_authenticated'):
             return view_func(request, *args, **kwargs)
-        return redirect('staff_login')
+        return redirect('staff:staff_login')
     return wrapper
 
 @staff_required
