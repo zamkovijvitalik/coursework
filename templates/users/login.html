@@ -1,55 +1,50 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <title>Вхід | Black&amp;Brew</title>
-</head>
-<body>
-    <h2>Вхід</h2>
-    <form method="post" action="{% url 'login' %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">
-        {% csrf_token %}
+{% extends 'users/base.html' %}
 
-        <!-- Username field -->
-        <div>
-            <label for="id_username">Ім'я користувача:</label><br>
-            <input
-                type="text"
-                name="username"
-                id="id_username"
-                value="{{ form.username.value|default_if_none:'' }}"
-                required
-            >
-            {% for error in form.username.errors %}
-                <p class="error">{{ error }}</p>
-            {% endfor %}
-        </div>
+{% block title %}Вхід | Black&Brew{% endblock %}
 
-        <!-- Password field -->
-        <div>
-            <label for="id_password">Пароль:</label><br>
-            <input
-                type="password"
-                name="password"
-                id="id_password"
-                required
-            >
-            {% for error in form.password.errors %}
-                <p class="error">{{ error }}</p>
-            {% endfor %}
-        </div>
+{% block content %}
+  <h2>Вхід</h2>
 
-        <!-- next hidden field -->
-        {% if request.GET.next %}
-            <input type="hidden" name="next" value="{{ request.GET.next }}">
-        {% endif %}
+  <form method="post" action="{% url 'login' %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">
+    {% csrf_token %}
 
-        <button type="submit">Увійти</button>
-    </form>
+    <div class="fields">
+      <strong><label for="id_username">Ім'я користувача:</label></strong><br>
+      <input
+        type="text"
+        name="username"
+        id="id_username"
+        value="{{ form.username.value|default_if_none:'' }}"
+        required
+      >
+      {% for error in form.username.errors %}
+        <p class="error">{{ error }}</p>
+      {% endfor %}
+    </div>
 
-    <p>Ще не маєте акаунту?
-        <a href="{% url 'register' %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">
-            Зареєструйтесь
-        </a>
-    </p>
-</body>
-</html>
+    <div class="fields">
+      <strong><label for="id_password">Пароль:</label></strong><br>
+      <input
+        type="password"
+        name="password"
+        id="id_password"
+        required
+      >
+      {% for error in form.password.errors %}
+        <p class="error">{{ error }}</p>
+      {% endfor %}
+    </div>
+
+    {% if request.GET.next %}
+      <input type="hidden" name="next" value="{{ request.GET.next }}">
+    {% endif %}
+
+    <button type="submit">Увійти</button>
+  </form>
+
+  <p>Ще не маєте акаунту?
+    <a href="{% url 'register' %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">
+      Зареєструйтесь
+    </a>
+  </p>
+{% endblock %}
