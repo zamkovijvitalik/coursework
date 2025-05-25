@@ -10,11 +10,33 @@
     <div style="border:1px solid #eee; padding:10px; margin-bottom:10px; background:#f6f6f6;">
       <p><strong>Замовлення №{{ order.id }}</strong> — {{ order.created_at|date:"d.m.Y H:i" }}</p>
       <p>Ім'я: {{ order.name }}</p>
-      <ul>
-        {% for item in order.orderitem_set.all %}
-          <li>{{ item.product.name }} × {{ item.quantity }}</li>
-        {% endfor %}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Товар</th>
+            <th>Ціна</th>
+            <th>Кількість</th>
+            <th>Сума</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in order.orderitem_set.all %}
+            <tr>
+              <td>{{ item.product.name }}</td>
+              <td>{{ item.product.price }} грн</td>
+              <td>{{ item.quantity }}</td>
+              <td>{{ item.total_price }} грн</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3"><strong>Загальна сума:</strong></td>
+            <td><strong>{{ order.total_price }} грн</strong></td>
+          </tr>
+        </tfoot>
+      </table>
+
     </div>
   {% endfor %}
 {% else %}
