@@ -1,11 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head><title>Панель працівника</title></head>
-<body>
-    <h2>Black&Brew</h2>
-    <ul>
-        <li><a href="{% url 'staff:staff_orders' %}">Поточні замовлення</a></li>
-        <li><a href="{% url 'staff:done_orders' %}">Виконані замовлення</a></li>
-    </ul>
-</body>
-</html>
+{% extends 'staff/base.html' %}
+
+{% block title %}Панель працівника | Black&Brew{% endblock %}
+
+{% block content %}
+  <h3>Розклад роботи</h3>
+  <table class="schedule-table">
+    <thead>
+      <tr>
+        <th><strong>День</strong></th>
+        <th><strong>Час роботи</strong></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Понеділок</strong></td><td><strong>08:00 – 17:00</strong></td></tr>
+      <tr><td><strong>Вівторок</strong></td><td><strong>08:00 – 17:00</strong></td></tr>
+      <tr><td><strong>Середа</strong></td><td><strong>08:00 – 17:00</strong></td></tr>
+      <tr><td><strong>Четвер</strong></td><td><strong>08:00 – 17:00</strong></td></tr>
+      <tr><td><strong>П’ятниця</strong></td><td><strong>08:00 – 17:00</strong></td></tr>
+      <tr><td><strong>Субота</strong></td><td><strong>09:00 – 15:00</strong></td></tr>
+      <tr><td><strong>Неділя</strong></td><td><strong>Вихідний</strong></td></tr>
+    </tbody>
+  </table>
+{% endblock %}

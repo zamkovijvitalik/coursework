@@ -1,46 +1,48 @@
-<h2>Невиконані замовлення</h2>
+{% extends 'staff/base.html' %}
 
-<ul>
-        <li><a href="{% url 'staff:staff_orders' %}">Поточні замовлення</a></li>
-        <li><a href="{% url 'staff:done_orders' %}">Виконані замовлення</a></li>
-</ul>
+{% block title %}Невиконані замовлення | Black&Brew{% endblock %}
 
-{% for order in orders %}
-  <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
-    <p><strong>Замовлення №{{ order.id }}</strong> — {{ order.created_at|date:"d.m.Y H:i" }}</p>
-    <p>Ім'я: {{ order.name }}</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Товар</th>
-          <th>Ціна</th>
-          <th>Кількість</th>
-          <th>Сума</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for item in order.orderitem_set.all %}
+{% block content %}
+  <h2>Невиконані замовлення</h2>
+
+  {% for order in orders %}
+    <div style="border:1px solid #ccc; padding:10px; margin-bottom:20px; background: #fdfdfd;">
+      <p><strong>Замовлення №{{ order.id }}</strong> — {{ order.created_at|date:"d.m.Y H:i" }}</p>
+      <p><strong>Ім'я:</strong> {{ order.name }}</p>
+
+      <table style="width:100%; margin-top: 10px; border-collapse: collapse;">
+        <thead>
           <tr>
-            <td>{{ item.product.name }}</td>
-            <td>{{ item.product.price }} грн</td>
-            <td>{{ item.quantity }}</td>
-            <td>{{ item.total_price }} грн</td>
+            <th>Товар</th>
+            <th>Ціна</th>
+            <th>Кількість</th>
+            <th>Сума</th>
           </tr>
-        {% endfor %}
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="3"><strong>Загальна сума:</strong></td>
-          <td><strong>{{ order.total_price }} грн</strong></td>
-        </tr>
-      </tfoot>
-    </table>
+        </thead>
+        <tbody>
+          {% for item in order.orderitem_set.all %}
+            <tr>
+              <td>{{ item.product.name }}</td>
+              <td>{{ item.product.price }} грн</td>
+              <td>{{ item.quantity }}</td>
+              <td>{{ item.total_price }} грн</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3"><strong>Загальна сума:</strong></td>
+            <td><strong>{{ order.total_price }} грн</strong></td>
+          </tr>
+        </tfoot>
+      </table>
 
-    <form method="post" action="{% url 'staff:mark_order_completed' order.id %}">
-      {% csrf_token %}
-      <button type="submit">Позначити як виконане</button>
-    </form>
-  </div>
-{% empty %}
-  <p>Немає нових замовлень</p>
-{% endfor %}
+      <form method="post" action="{% url 'staff:mark_order_completed' order.id %}" style="margin-top: 10px; text-align: right;">
+        {% csrf_token %}
+        <button type="submit">Позначити як виконане</button>
+      </form>
+    </div>
+  {% empty %}
+    <p>Немає нових замовлень</p>
+  {% endfor %}
+{% endblock %}
