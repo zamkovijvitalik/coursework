@@ -1,44 +1,45 @@
-<h2>Виконані замовлення</h2>
+{% extends 'staff/base.html' %}
 
-<ul>
-        <li><a href="{% url 'staff:staff_orders' %}">Поточні замовлення</a></li>
-        <li><a href="{% url 'staff:done_orders' %}">Виконані замовлення</a></li>
-</ul>
+{% block title %}Виконані замовлення | Black&Brew{% endblock %}
 
-{% if orders %}
-  {% for order in orders %}
-    <div style="border:1px solid #eee; padding:10px; margin-bottom:10px; background:#f6f6f6;">
-      <p><strong>Замовлення №{{ order.id }}</strong> — {{ order.created_at|date:"d.m.Y H:i" }}</p>
-      <p>Ім'я: {{ order.name }}</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Товар</th>
-            <th>Ціна</th>
-            <th>Кількість</th>
-            <th>Сума</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for item in order.orderitem_set.all %}
+{% block content %}
+  <h2>Виконані замовлення</h2>
+
+  {% if orders %}
+    {% for order in orders %}
+      <div style="border:1px solid #eee; padding:10px; margin-bottom:20px; background:#f6f6f6;">
+        <p><strong>Замовлення №{{ order.id }}</strong> — {{ order.created_at|date:"d.m.Y H:i" }}</p>
+        <p><strong>Ім'я:</strong> {{ order.name }}</p>
+
+        <table style="width:100%; margin-top: 10px; border-collapse: collapse;">
+          <thead>
             <tr>
-              <td>{{ item.product.name }}</td>
-              <td>{{ item.product.price }} грн</td>
-              <td>{{ item.quantity }}</td>
-              <td>{{ item.total_price }} грн</td>
+              <th>Товар</th>
+              <th>Ціна</th>
+              <th>Кількість</th>
+              <th>Сума</th>
             </tr>
-          {% endfor %}
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="3"><strong>Загальна сума:</strong></td>
-            <td><strong>{{ order.total_price }} грн</strong></td>
-          </tr>
-        </tfoot>
-      </table>
-
-    </div>
-  {% endfor %}
-{% else %}
-  <p>Виконаних замовлень ще немає.</p>
-{% endif %}
+          </thead>
+          <tbody>
+            {% for item in order.orderitem_set.all %}
+              <tr>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.product.price }} грн</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.total_price }} грн</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3"><strong>Загальна сума:</strong></td>
+              <td><strong>{{ order.total_price }} грн</strong></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>Виконаних замовлень ще немає.</p>
+  {% endif %}
+{% endblock %}
