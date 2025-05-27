@@ -13,9 +13,18 @@
         nav { background:#fff; display:flex; justify-content:center; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
         nav a { color:#1e1e1e; padding:16px 24px; text-decoration:none; font-weight:600; transition:background 0.3s, color 0.3s; }
         nav a:hover { background:#1e1e1e; color:#fff; }
-        .container { padding:60px 20px; max-width:800px; margin:auto; text-align:center; }
-        h2 { text-align:center; font-family:'Playfair Display', serif; font-size:2.5em; margin-bottom:30px; }
-        footer { background:#1e1e1e; color:#ccc; text-align:center; padding:20px; font-size:0.9em; }
+        ul { font-size:1.5em; margin:10px auto;}
+        .container { padding:0px 20px; max-width:600px; margin:70px auto; text-align:center; }
+        h2 { font-family:'Playfair Display', serif; font-size:2.5em; margin-bottom:20px; color:#1e1e1e; }
+        table { font-size:1.5em; margin:10px auto;}
+        table th, table td { padding: 2px 5px;}
+        .cart-remove {color: #1e1e1e; text-decoration: none; font-size: 1.2em;}
+        button { margin:10px auto; font-size:1.5em; margin:0px auto;}
+        .cart-update-btn { text-align: right; margin-top: 10px;}
+        p {font-size:1.5em; margin:0px auto;}
+        .cart-order-btn { text-align: right; margin-top: 30px;}
+        .cart-back-btn { margin-top: 30px;}
+        footer { position: fixed; bottom: 0; width: 100%; background: #1e1e1e; color: #ccc; text-align: center; padding: 20px; }
     </style>
 </head>
 <body>
@@ -45,9 +54,15 @@
         </div>
     </nav>
 
-  <main>
-    {% block content %}{% endblock %}
-  </main>
+    <main>
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer>
+            &copy; 2025 Black&Brew. Смакуйте момент.
+    </footer>
 
 </body>
 </html>
