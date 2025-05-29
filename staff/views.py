@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
 from cart.models import Order
 
-SECRET_STAFF_PASSWORD = 'coffee'  # можеш винести в settings.py
+SECRET_STAFF_PASSWORD = 'coffee'
 
 def staff_login(request):
     if request.method == 'POST':

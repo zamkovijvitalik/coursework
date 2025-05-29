@@ -92,8 +92,10 @@ def checkout(request):
     if request.method == 'POST':
         form = GuestNameForm(request.POST)
         if form.is_valid():
-            order = Order.objects.create(name=form.cleaned_data['name'])
             session_key = _get_session_key(request)
+            order = Order.objects.create(
+                name=form.cleaned_data['name'],
+                session_key=session_key)
             items = CartItem.objects.filter(session_key=session_key)
             for ci in items:
                 OrderItem.objects.create(
@@ -108,9 +110,6 @@ def checkout(request):
 
     return render(request, 'cart/checkout.html', {'form': form})
 
-def order_success(request):
-    return render(request, 'cart/success.html')
-
 @login_required
 def order_history(request):
     orders = Order.objects.filter(user=request.user).order_by('-created_at')
@@ -119,8 +118,13 @@ def order_history(request):
 def order_detail(request, order_id):
     order = get_object_or_404(Order, id=order_id)
 
-    if order.user != request.user and not request.user.is_staff:
-        return redirect('cart:detail')  # Захист від перегляду чужих замовлень
+    if order.user:
+        if request.user != order.user and not request.user.is_staff:
+            return redirect('cart:detail')
+    else:
+        session_key = _get_session_key(request)
+        if order.session_key != session_key:
+            return redirect('cart:detail')
 
     return render(request, 'cart/order_detail.html', {'order': order})
 

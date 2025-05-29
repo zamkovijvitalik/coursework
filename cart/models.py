@@ -26,6 +26,7 @@ class Order(models.Model):
         blank=True,
         on_delete=models.SET_NULL
     )
+    session_key = models.CharField(max_length=40, null=True, blank=True)
     is_completed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
