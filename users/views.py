@@ -9,7 +9,7 @@ def register_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('home')   # або куди хочеш
+            return redirect('home')
     else:
         form = UserCreationForm()
     return render(request, 'users/register.html', {'form': form})
