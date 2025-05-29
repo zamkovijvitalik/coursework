@@ -1,40 +1,48 @@
-Black&Brew Cafe Web Application
+# Black&Brew Cafe Web Application
 A web-based management system for the Black&Brew cafe. Built with Django, the application allows customers to browse the menu and place orders, while staff can manage those orders through a secure interface.
 
-Project Structure
-config/ – project settings and main URLs
+---
 
-cart/ – core logic
+## Project Structure
 
-menu/ – core logic
+- config/ – project settings and main URLs
 
-navigation/ – core logic
+- cart/ – core logic
 
-staff/ – core logic
+- menu/ – core logic
 
-templates/ – HTML templates
+- navigation/ – core logic
 
-static/ – static files (images)
+- staff/ – core logic
 
-db.sqlite3 – default SQLite database
+- templates/ – HTML templates
 
-Requirements
-Python 3.10+
+- static/ – static files (images)
 
-pip
+- db.sqlite3 – default SQLite database
 
-Installation and Setup
-1. Clone the repository
+---
+
+## Requirements
+
+- Python 3.10+
+- pip
+
+---
+
+## Installation and Setup
+
+### 1. Clone the repository
 
 git clone https://github.com/zamkovijvitalik/coursework.git
 cd blackbrew
 
-2. Start the development server
+### 2. Start the development server
 
 python manage.py runserver
 
 
-Now open your browser and go to:
+## Now open your browser and go to:
 
 http://127.0.0.1:8000/
 
